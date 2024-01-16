@@ -13,5 +13,24 @@
 }
 
 .search-button {
+    height: 48px;
     text-transform: none !important;
+    font-weight: 600 !important;
+    font-size: 1.125rem !important;
+}
+
+.search_input-div {
+    height: 48px;
+    max-height: 48px;
+}
+
+.search_button-div {
+    height: 48px;
+    max-height: 48px;
+}
+
+@media (min-width:600px) {
+    .search_input-div {
+        max-width: calc(83.333333% - 32px) !important;
+    }
 }
