@@ -1,0 +1,10 @@
+.app-bar {
+    min-height: 88px;
+    background-color: #fff;
+}
+
+@media (max-width:600px) {
+    .app-bar {
+        padding: 32px;
+    }
+}
