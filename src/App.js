@@ -21,8 +21,20 @@ const theme = createTheme({
 export const HOME_PATH = '/home';
 export const PROFILE_PATH = '/perfil';
 
+const initialStateHomeLoading = {
+  search: false
+}
 
-const initialState = {};
+const initialState = {
+  search: {
+    inputValue: '',
+    options: [],
+    option: {}
+  },
+  home: {
+    loading: initialStateHomeLoading
+  }
+};
 
 const reducer = (state = initialState, { type, property, field, value }) => {
   switch (type) {
@@ -43,7 +55,7 @@ function App() {
   const globalContextValues = useMemo(() => ({ ...state, dispatch }), [state, dispatch]);
 
   const goToHome = useCallback(() => {
-    if (window.location.pathname) navigate(HOME_PATH);
+    (window.location.pathname === '/') && navigate(HOME_PATH);
   }, [navigate]);
   useEffect(() => goToHome(), [goToHome]);
 

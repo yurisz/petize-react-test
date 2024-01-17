@@ -29,6 +29,12 @@
     max-height: 48px;
 }
 
+@media (max-width:600px) {
+    .home {
+        padding: 32px;
+    }
+}
+
 @media (min-width:600px) {
     .search_input-div {
         max-width: calc(83.333333% - 32px) !important;
