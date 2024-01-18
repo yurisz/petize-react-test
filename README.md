@@ -58,17 +58,17 @@ Você nunca precisa usar `eject`. O conjunto de recursos selecionados é adequad
 
 ### `Material-UI`
 
-Fornece uma série de componentes, funções e padrões que auxiliam na produção.
+Fornece uma série de componentes, funções e padrões que auxiliam na produção.\
 Acesse [mui.com/material-ui/](https://mui.com/material-ui/) para mais informações.
 
 ### `react-icons`
 
-Fornece componentes ícones.
+Fornece componentes ícones.\
 Acesse [react-icons.github.io/react-icons/](https://react-icons.github.io/react-icons/) para mais informações.
 
 ### `react-router-dom`
 
-Fornece componentes e funções para lidar com rotas de um jeito simples.
+Fornece componentes e funções para lidar com rotas de um jeito simples.\
 Acesse [reactrouter.com](https://reactrouter.com/en/main) para mais informações.
 
 ## Estrutura
