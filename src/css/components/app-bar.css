@@ -8,3 +8,11 @@
         padding: 32px;
     }
 }
+
+.with-app-bar {
+    margin-top: 88px;
+
+    @media (max-width:600px) {
+        margin-top: 163px;
+    }
+}

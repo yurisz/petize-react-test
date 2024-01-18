@@ -15,16 +15,16 @@ const SMALL_SPACING = 32;
 const Home = () => {
 
     const navigate = useNavigate();
-    const { home, search, dispatch } = useContext(GlobalContext);
+    const { home, search, repositories, getUserRepositories, dispatch } = useContext(GlobalContext);
     const { loading } = home;
 
-    const searchInputOnChange = (e, value, reason) => {
+    const searchInputOnChange = (event, value, reason) => {
         if (reason === 'reset') return;
         dispatch({ type: 'search', field: 'inputValue', value: (value || '') });
         (Object.entries(search.option)?.length) && dispatch({ type: 'search', field: 'option', value: {} });
     };
 
-    const searchButtonOnClick = async (e) => {
+    const searchButtonOnClick = async (event) => {
         dispatch({ type: 'home', property: 'loading', field: 'search', value: true });
 
         const response = await fetch(`https://api.github.com/users/${search.inputValue}`);
@@ -40,18 +40,20 @@ const Home = () => {
         dispatch({ type: 'home', property: 'loading', field: 'search', value: false });
     };
 
-    const searchAutocompleteOnChange = (e, value, reason) => {
+    const searchAutocompleteOnChange = (event, value, reason) => {
         if (reason === 'selectOption') {
             (!search.inputValue) && dispatch({ type: 'search', field: 'inputValue', value: value?.login });
             dispatch({ type: 'search', field: 'option', value });
             dispatch({ type: 'search', field: 'options', value: [] });
-            goToProfile({ e, value, reason });
+            (value?.id !== repositories?.[0]?.owner?.id) && dispatch({ field: 'repositories', value: [] });
+            (value?.repos_url) && getUserRepositories(value?.repos_url);
+            goToProfile({ event, value, reason });
         }
     }
 
-    const goToProfile = ({ value }) => {
-        navigate(`${PROFILE_PATH}/${value?.login}`);
-    }
+    const handleSearchAutocompleteOnClose = event => dispatch({ type: 'search', field: 'options', value: [] });
+
+    const goToProfile = ({ value }) => navigate(`${PROFILE_PATH}/${value?.login}`);
 
 
     return <Grid container className='home'>
@@ -62,6 +64,8 @@ const Home = () => {
             <Grid container item xs={12} style={{ gap: SMALL_SPACING }}>
                 <Grid item xs={12} sm={10} className='search_input-div'>
                     <SearchAutocompleteInput
+                        noOptionsText='Sem opções'
+                        onClose={handleSearchAutocompleteOnClose}
                         open={!!search.options.length}
                         value={search.option}
                         onChange={searchAutocompleteOnChange}

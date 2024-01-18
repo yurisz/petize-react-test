@@ -5,6 +5,83 @@
 }
 
 .user {
-    background-color: #fff;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-div {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+.user-avatar {
+    width: 48px !important;
+    height: 48px !important;
+}
+
+.user-header {
+    display: flex;
+}
+
+.user-names-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-information-container {
+    display: flex;
+    flex-direction: column;
+
+    & a {
+        cursor: pointer;
+    }
+}
+
+.user-information-div {
+    display: flex;
+    align-items: center;
+}
+
+.user-contact-button {
+    height: 48px;
+    text-transform: none !important;
+    font-weight: 600 !important;
+    font-size: 1.125rem !important;
+}
+
+.repositories {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+
+    & .repository:not(:last-child) {
+        border-bottom: 1px solid #E2E8F0;
+    }
+}
+
+.repositories-loading {
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.repository {
+    display: flex;
+    flex-direction: column;
+
+    & a {
+        cursor: pointer;
+    }
+}
+
+.repository-footer {
+    display: flex;
+    align-items: center;
+
+    & span {
+        display: grid;
+        place-items: center;
+    }
 }
